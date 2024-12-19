@@ -1,11 +1,11 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { faker } from '@faker-js/faker'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NgIf],
+  imports: [NgIf,NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -15,6 +15,11 @@ export class AppComponent {
   
   onChangeInput(value:string){
     this.inputText=value;
+  }
+  compare(randomLetter:string,inputLetter:string):string{
+    if(!inputLetter)
+      return "pending";
+    return randomLetter==inputLetter?"correct":"incorrect";
   }
 }
 
